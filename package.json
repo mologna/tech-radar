@@ -9,9 +9,14 @@
     "doc": "docs"
   },
   "devDependencies": {
+    "@aws-cdk/aws-cloudfront": "^1.61.1",
+    "@aws-cdk/aws-s3": "^1.61.1",
+    "@aws-cdk/core": "^1.61.1",
+    "aws-cdk": "^1.61.1",
     "browser-sync": "^2.26.3",
     "eslint": "^5.7.0",
-    "htmllint": "^0.7.2"
+    "htmllint": "^0.7.2",
+    "typescript": "^4.0.2"
   },
   "scripts": {
     "start": "browser-sync docs -w",

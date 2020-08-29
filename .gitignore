@@ -1,3 +1,8 @@
 node_modules/
 .DS_Store
 .idea/
+
+# CDK asset staging directory
+.cdk.staging
+cdk.out
+*.d.ts

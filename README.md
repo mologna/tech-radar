@@ -89,6 +89,29 @@ yarn start
 http://localhost:3000/
 ```
 
+# Infrastructure
+This project uses the AWS Cloud Development Kit ((AWS CDK)[https://docs.aws.amazon.com/cdk/latest/guide/home.html]) to deploy and maintain infrastructure resources. The stack is defined within [tech-radar-cdk.ts](./tech-radar-cdk.ts).
+
+## Useful commands
+*NOTE*: Make sure you have the `AWS_PROFILE` environment variable set before running the following commands
+
+ * `yarn cdk deploy`      deploy this stack to your default AWS account/region
+ * `yarn cdk diff`        compare deployed stack with current state
+ * `yarn cdk synth`       emits the synthesized CloudFormation template
+
+# Deployments
+Deployments are handled by the [deploy.sh](./scripts/deploy.sh) script. It will copy the contents of the build directory into the provided S3 bucket and invalidate the CloudFront distribution. The script requires the following environment variables:
+
+```bash
+AWS_PROFILE     # The aws profile used for deployments
+AWS_S3_BUCKET   # The S3 bucket to sync with the build directory
+AWS_REGION      # The AWS region of the S3 bucket and CloudFront distribution
+BUILD_DIR       # The build artifacts to deploy to the S3 bucket
+DISTRIBUTION_ID # The CloudFront distribution id
+```
+
+`AWS_PROFILE=<aws-profile> AWS_REGION=us-east-1 AWS_S3_BUCKET=<bucket-name> BUILD_DIR=docs DISTRIBUTION_ID=<distribution-id> ./scripts/deploy.sh`
+
 ## License
 
 ```
